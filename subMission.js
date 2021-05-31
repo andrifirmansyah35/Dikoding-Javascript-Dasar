@@ -120,6 +120,14 @@ if (typeof c != 'number') {
 
 const detectTriangle = (a, b, c) => {
   // TODO 3
+  try{
+    validateNumberInput(a,b,c)
+  }catch(error){
+    if (error instanceof ValidationError) {
+        return(error.message);
+    }
+  }
+
     if (a === b && b === c) {
       return 'Segitiga sama sisi';
     }
@@ -135,14 +143,14 @@ let a = 3;
 let b = 4;
 let c = false;
 
-try{
-    validateNumberInput(a,b,c);
-    detectTriangle(a,b,c);
-}catch(error){
-    if (error instanceof ValidationError) {
-        console.log(`Invalid data: ${error.message}`);
-    }
-}
+console.log(detectTriangle(a, b, c));
+// try{
+//     detectTriangle(a, b, c);
+// }catch(error){
+//     if (error instanceof ValidationError) {
+//         console.log(`Invalid data: ${error.message}`);
+//     }
+// }
 
 
 // try{
